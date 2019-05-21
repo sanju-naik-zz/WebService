@@ -10,7 +10,7 @@ import Foundation
 
 public struct Resource<T: Codable> {
     var urlRequest: URLRequest
-    let parse: (URLSessionResponse) -> Result<T>
+    let parse: (URLSessionResponse) -> Result<T, Error>
 }
 
 
@@ -20,8 +20,30 @@ extension Resource {
         var urlComponents = URLComponents(string: url)!
         urlComponents.queryItems = parameters?.compactMap({ URLQueryItem(name: $0.key, value: String(describing: $0.value)) })
         self.urlRequest = URLRequest(url: urlComponents.url!)
+        
         self.parse = { response in
-            return Result(response.validate())
+            return Result(catching: {
+                switch response.validate() {
+                case .success(let data):
+                    do {
+                        let result = try JSONDecoder().decode(T.self, from: data)
+                        return result
+                    } catch {
+                        throw error
+                    }
+                    
+                case .error(let data):
+                    do {
+                        let error = try JSONDecoder().decode(APIError.self, from: data)
+                        throw error
+                    } catch {
+                        throw error
+                    }
+                    
+                case .networkError(let error):
+                    throw error
+                }
+            })
         }
     }
     
@@ -41,7 +63,28 @@ extension Resource {
             urlRequest.httpBody = data
         }
         self.parse = { response in
-            return Result(response.validate())
+            return Result(catching: {
+                switch response.validate() {
+                case .success(let data):
+                    do {
+                        let result = try JSONDecoder().decode(T.self, from: data)
+                        return result
+                    } catch {
+                        throw error
+                    }
+                    
+                case .error(let data):
+                    do {
+                        let error = try JSONDecoder().decode(APIError.self, from: data)
+                        throw error
+                    } catch {
+                        throw error
+                    }
+                    
+                case .networkError(let error):
+                    throw error
+                }
+            })
         }
     }
 }

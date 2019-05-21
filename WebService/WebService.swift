@@ -9,7 +9,7 @@
 import Foundation
 
 open class WebService {
-    public static func load<T: Codable>(_ resource: Resource<T>, completion: @escaping (Result<T>) -> Void) {
+    public static func load<T: Codable>(_ resource: Resource<T>, completion: @escaping (Result<T, Error>) -> Void) {
         URLSession.shared.dataTask(with: resource.urlRequest) { (data, response, error) in
             let sessionResponse = URLSessionResponse(data: data, response: response, error: error)
             DispatchQueue.main.async {

@@ -27,6 +27,25 @@ struct URLSessionResponse {
 
 extension URLSessionResponse {
     
+//    func isValid() throws -> Data {
+//        if let error = error {
+//            throw error
+//        }
+//
+//        /// Check if it is of Valid HTTPURLResponse type, data is present & status code doesn't belong to emptyData set
+//        guard let response = response as? HTTPURLResponse,
+//            let data = data,
+//            !emptyDataStatusCodes.contains(response.statusCode) else {
+//                return Data()
+//        }
+//
+//        if acceptableStatusCodes.contains(response.statusCode) {
+//            return data
+//        } else {
+//            return data
+//        }
+//    }
+    
     func validate() -> ValidationResult {
         if let error = error {
             return .networkError(error)
