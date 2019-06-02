@@ -8,10 +8,10 @@
 
 import Foundation
 
-public enum HTTPMethod<Body> {
+public enum HTTPMethod {
     case get
-    case post(Body)
-    case put(Body)
+    case post
+    case put
     case delete
     
     var stringValue: String {
@@ -25,13 +25,13 @@ public enum HTTPMethod<Body> {
 }
 
 
-extension HTTPMethod {
-    public func map<B>(_ transform: (Body) -> B) -> HTTPMethod<B> {
-        switch self {
-        case .get: return .get
-        case .delete: return .delete
-        case .post(let body): return .post(transform(body))
-        case .put(let body): return .put(transform(body))
-        }
-    }
-}
+//extension HTTPMethod {
+//    public func map<B>(_ transform: (Body) -> B) -> HTTPMethod<B> {
+//        switch self {
+//        case .get: return .get
+//        case .delete: return .delete
+//        case .post(let body): return .post(transform(body))
+//        case .put(let body): return .put(transform(body))
+//        }
+//    }
+//}

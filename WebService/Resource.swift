@@ -49,19 +49,12 @@ extension Resource {
     
     
     /// POST/PUT Requests Initializer.
-    public init<Body: Encodable>(url: URL, method: HTTPMethod<Body>) {
+    public init(url: URL, method: HTTPMethod, params: [String: Any]) {
         urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = method.stringValue
-        let methodData = method.map({ (body) in
-            return try! JSONEncoder().encode(body)
-        })
         
-        if case let .post(data) = methodData {
-            urlRequest.httpBody = data
-        }
-        if case let .put(data) = methodData {
-            urlRequest.httpBody = data
-        }
+        urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         self.parse = { response in
             return Result(catching: {
                 switch response.validate() {
