@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E335409F22FC3D1F00BADC96 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335409E22FC3D1F00BADC96 /* Test.swift */; };
 		E3452D1021F8BC0D004D8334 /* WebService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3452D0621F8BC0D004D8334 /* WebService.framework */; };
 		E3452D1521F8BC0D004D8334 /* WebServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3452D1421F8BC0D004D8334 /* WebServiceTests.swift */; };
 		E3452D1721F8BC0D004D8334 /* WebService.h in Headers */ = {isa = PBXBuildFile; fileRef = E3452D0921F8BC0D004D8334 /* WebService.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -29,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E335409E22FC3D1F00BADC96 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		E3452D0621F8BC0D004D8334 /* WebService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WebService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3452D0921F8BC0D004D8334 /* WebService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebService.h; sourceTree = "<group>"; };
 		E3452D0A21F8BC0D004D8334 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				E3452D2621F972CA004D8334 /* Result.swift */,
 				E3452D2821F97476004D8334 /* URLSessionResponse.swift */,
 				E3DA39A821FD554100CE7027 /* APIError.swift */,
+				E335409E22FC3D1F00BADC96 /* Test.swift */,
 			);
 			path = WebService;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 				E3452D2921F97476004D8334 /* URLSessionResponse.swift in Sources */,
 				E3452D2521F97241004D8334 /* WebService.swift in Sources */,
 				E3452D2321F96C35004D8334 /* HTTPMethod.swift in Sources */,
+				E335409F22FC3D1F00BADC96 /* Test.swift in Sources */,
 				E3452D2721F972CA004D8334 /* Result.swift in Sources */,
 				E3452D2121F8DE1A004D8334 /* Resource.swift in Sources */,
 				E3DA39A921FD554100CE7027 /* APIError.swift in Sources */,
